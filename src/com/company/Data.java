@@ -42,16 +42,16 @@ public abstract class Data {
     }
 
 
-    public static class FloatVal extends Data {
-        public final Float val;
+    public static class DoubleVal extends Data {
+        public final Double val;
 
-        public FloatVal(Float val) {
+        public DoubleVal(Double val) {
             this.val = val;
         }
 
         @Override
         public String toString() {
-            return "FloatVal{" + "val=" + val + '}';
+            return "DoubleVal{" + "val=" + val + '}';
         }
     }
 

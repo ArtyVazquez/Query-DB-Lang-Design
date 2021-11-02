@@ -1,10 +1,6 @@
 package com.company;
 
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 public class Programs {
 
 
@@ -13,11 +9,11 @@ public class Programs {
         Interpreter i = new Interpreter();
 
         // Program 1 CREATE
-/*        i.query(new Query.CREATE(
+/*        i.queryAll(new Query.CREATE(
                 new DatabaseName("Database CS476")));*/
 
         // Program 2 CREATE, INSERT
-/*        i.query(new Query.CREATE(
+/*        i.queryAll(new Query.CREATE(
                         new DatabaseName("Database CS476")),
                 new Query.INSERT(
                         new DatabaseName("Database CS476"),
@@ -25,7 +21,7 @@ public class Programs {
                         new Data.StrVal("Arturo")));*/
 
         // Program 3 CREATE, INSERT. GET
-/*        i.query(new Query.CREATE(
+/*        i.queryAll(new Query.CREATE(
                         new DatabaseName("Database CS476")),
                 new Query.INSERT(
                         new DatabaseName("Database CS476"),
@@ -35,7 +31,7 @@ public class Programs {
                         new KeyName("Student1")));*/
 
         // Program 4 CREATE, INSERT, UPDATE, GET
-/*        i.query(new Query.CREATE(
+/*        i.queryAll(new Query.CREATE(
                         new DatabaseName("Database CS476")),
                 new Query.INSERT(
                         new DatabaseName("Database CS476"),
@@ -48,7 +44,7 @@ public class Programs {
                         new KeyName("Student1")));*/
 
         // Program 5 CREATE, INSERT, UPDATE, GET
-/*        i.query(new Query.CREATE(
+/*        i.queryAll(new Query.CREATE(
                         new DatabaseName("Plants")),
                 new Query.INSERT(
                         new DatabaseName("Plants"),
@@ -72,7 +68,7 @@ public class Programs {
                         new KeyName("Vegetables")));*/
 
         // Program 6
-/*        i.query(new Query.CREATE(
+/*        i.queryAll(new Query.CREATE(
                         new DatabaseName("Plants")),
                 new Query.INSERT(
                         new DatabaseName("Plants"),
@@ -96,7 +92,7 @@ public class Programs {
                         new KeyName("Fruits")));*/
 
         // Program 7 ---> error thrown
-/*        i.query(new Query.CREATE(
+/*        i.queryAll(new Query.CREATE(
                         new DatabaseName("Plants")),
                 new Query.INSERT(
                         new DatabaseName("Plants"),
@@ -124,7 +120,7 @@ public class Programs {
                 ));*/
 
         // Program 8
-/*        i.query(new Query.CREATE(
+/*        i.queryAll(new Query.CREATE(
                         new DatabaseName("Plants")),
                 new Query.INSERT(
                         new DatabaseName("Plants"),
@@ -158,10 +154,6 @@ public class Programs {
 
 
 
-
-
-
-
         /*
         *
         *
@@ -170,6 +162,30 @@ public class Programs {
         * */
 
         TypeChecker tc = new TypeChecker();
-        System.out.println(tc.typeCheckQuery(new Query.CREATE(new DatabaseName("MyDB"))));
+        System.out.println(
+                tc.typeCheck(new Query.CREATE(new DatabaseIdent("MyDB")))); // Should return true
+
+        System.out.println(
+                tc.typeCheck(new Query.CREATE(new KeyIdent("DB")))); // Should return false
+
+        System.out.println(
+                tc.typeCheck(new Query.CREATE(new Ident()))); // Should return false
+
+        System.out.println(
+                tc.typeCheck(new Query.CREATE(new DatabaseIdent("School")), // Should return true;
+                                new Query.INSERT(
+                                        new DatabaseIdent("School"),
+                                        new KeyIdent("Midterm Grades"),
+                                        new Data.DoubleVal(22.22))));
+
+        System.out.println(
+        tc.typeCheck(new Query.CREATE(new DatabaseIdent("School")), // Should return false;
+                new Query.INSERT(
+                        new DatabaseIdent("School"),
+                        new DatabaseIdent("Midterm Grades"),
+                        new Data.DoubleVal(22.22))));
+
+
+
     }
 }

@@ -1,12 +1,17 @@
 package com.company;
 
+import java.util.Arrays;
+
 public class TypeChecker {
 
     // The data of a query can be any Data object which is IntVal, StrVal, FloatVal or ArrVal.
-    // The DBname must be of type DATABASE
-    // The database key must be of type KEY
-    Boolean typeCheckQuery(Query q) {
+    // The DBname must be of type name more specifically DATABASE
+    // The database key must be of type name more specifically KEY
+    Boolean typeCheck(Query... quires) {
+        return Arrays.stream(quires).allMatch(this::typeCheck);
+    }
 
+    boolean typeCheck(Query q) {
         switch (q.getClass().getSimpleName()) {
             case "CREATE": {
                 return ((Query.CREATE) q).DBname.TYP ==  Data.TYPE.DATABASE;
@@ -24,7 +29,7 @@ public class TypeChecker {
             case "UPDATE": {
                 return ((Query.UPDATE) q).DBname.TYP == Data.TYPE.DATABASE &&
                         ((Query.UPDATE) q).key.TYP == Data.TYPE.KEY &&
-                        ((Query.UPDATE) q).updatedData.TYP ==Data.TYPE.DATA;
+                        ((Query.UPDATE) q).updatedData.TYP == Data.TYPE.DATA;
             }
             case "REMOVE": {
                 return ((Query.REMOVE) q).DBname.TYP == Data.TYPE.DATABASE &&
