@@ -7,6 +7,14 @@ import java.util.concurrent.atomic.AtomicReference;
 public abstract class Data {
     // Types of data that can be stores in the database
 
+    public enum TYPE {
+        DATABASE,
+        KEY,
+        DATA
+    }
+
+    public final TYPE TYP = TYPE.DATA;
+
     public static class IntVal extends Data {
         public final int val;
 

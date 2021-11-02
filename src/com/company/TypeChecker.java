@@ -2,61 +2,40 @@ package com.company;
 
 public class TypeChecker {
 
-    public enum TYPE {
-        CREATE,
-        INSERT,
-        RETRIEVE,
-        UPDATE,
-        REMOVE,
-        DELETE,
-        COMBINE,
-        DATABASENAME,
-        KEYNAME,
-        DATA
-    }
-
-    Boolean typeCheck(Object q, TYPE typ) {
+    Boolean typeCheckQuery(Query q, Data.TYPE... typ) {
 
         switch (q.getClass().getSimpleName()) {
             case "CREATE": {
-                return typ == TYPE.CREATE &&
-                        typeCheck( ((Query.CREATE) q).DBname, TYPE.DATABASENAME);
+                return ((Query.CREATE) q).DBname.TYP ==  typ[0];
             }
             case "INSERT": {
-                return typ == TYPE.INSERT &&
-                        typeCheck( ((Query.INSERT) q).DBname, TYPE.DATABASENAME) &&
-                        typeCheck( ((Query.INSERT) q).key, TYPE.KEYNAME) &&
-                        typeCheck( ((Query.INSERT) q).data, TYPE.DATA);
+                return  ((Query.INSERT) q).DBname.TYP == typ[0] &&
+                        ((Query.INSERT) q).key.TYP == typ[1] &&
+                        ((Query.INSERT) q).data.TYP == typ[2];
+
             }
             case "RETRIEVE": {
-                return typ == TYPE.RETRIEVE &&
-                        typeCheck( ((Query.RETRIEVE) q).DBname, TYPE.DATABASENAME) &&
-                        typeCheck( ((Query.RETRIEVE) q).key, TYPE.KEYNAME);
+                return  ((Query.RETRIEVE) q).DBname.TYP == typ[0] &&
+                        ((Query.RETRIEVE) q).key.TYP == typ[1];
             }
             case "UPDATE": {
-                return typ == TYPE.UPDATE &&
-                        typeCheck( ((Query.UPDATE) q).DBname, TYPE.DATABASENAME) &&
-                        typeCheck( ((Query.UPDATE) q).key, TYPE.KEYNAME) &&
-                        typeCheck( ((Query.UPDATE) q).updatedData, TYPE.DATA);
-
-
+                return ((Query.UPDATE) q).DBname.TYP == typ[0] &&
+                        ((Query.UPDATE) q).key.TYP == typ[1] &&
+                        ((Query.UPDATE) q).updatedData.TYP == typ[2];
             }
             case "REMOVE": {
-                return typ == TYPE.REMOVE &&
-                        typeCheck( ((Query.REMOVE) q).DBname, TYPE.DATABASENAME) &&
-                        typeCheck( ((Query.REMOVE) q).key, TYPE.KEYNAME);
+                return ((Query.REMOVE) q).DBname.TYP == typ[0] &&
+                        ((Query.REMOVE) q).key.TYP == typ[1];
 
             }
             case "DELETE": {
-                return typ == TYPE.DELETE &&
-                        typeCheck( ((Query.DELETE) q).DBname, TYPE.DATABASENAME);
+                return ((Query.DELETE) q).DBname.TYP == typ[0];
             }
             case "COMBINE": {
-                return typ == TYPE.COMBINE &&
-                        typeCheck( ((Query.COMBINE) q).DBname, TYPE.DATABASENAME) &&
-                        typeCheck( ((Query.COMBINE) q).key, TYPE.KEYNAME) &&
-                        typeCheck( ((Query.COMBINE) q).key1, TYPE.KEYNAME) &&
-                        typeCheck( ((Query.COMBINE) q).key2, TYPE.KEYNAME);
+                return ((Query.COMBINE) q).DBname.TYP == typ[0] &&
+                        ((Query.COMBINE) q).key.TYP == typ[1] &&
+                        ((Query.COMBINE) q).key1.TYP == typ[2] &&
+                        ((Query.COMBINE) q).key2.TYP == typ[3];
             }
             default: return false;
         }

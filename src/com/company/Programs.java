@@ -124,7 +124,7 @@ public class Programs {
                 ));*/
 
         // Program 8
-        i.query(new Query.CREATE(
+/*        i.query(new Query.CREATE(
                         new DatabaseName("Plants")),
                 new Query.INSERT(
                         new DatabaseName("Plants"),
@@ -151,6 +151,25 @@ public class Programs {
                 new Query.RETRIEVE(
                         new DatabaseName("Plants"),
                         new KeyName("Fruits & Veg")
-                ));
+                ));*/
+
+
+
+
+
+
+
+
+
+
+        /*
+        *
+        *
+        * Type Checker
+        *
+        * */
+
+        TypeChecker tc = new TypeChecker();
+        System.out.println(tc.typeCheckQuery(new Query.CREATE(new DatabaseName("MyDB")), Data.TYPE.DATABASE));
     }
 }

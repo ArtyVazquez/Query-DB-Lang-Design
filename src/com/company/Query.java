@@ -62,7 +62,8 @@ public abstract class Query {
         }
     }
 
-    //
+    // DESIGN CHOICE LHS (key1) will be combined with RHS (key2) meaning that key1 will have its data itself plus
+    // key2's data
     public static class COMBINE extends Query {
         public final DatabaseName DBname;
         public final KeyName key;
