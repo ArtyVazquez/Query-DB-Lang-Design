@@ -7,12 +7,12 @@ import java.util.List;
 
 public class Programs {
 
-    // Inserting all the queries in an arraylist
+    // CREATE
     static public ArrayList<Query> program1 = new ArrayList<>(List.of(
             new Query.CREATE(new DatabaseName("Database CS476"))
     ));
 
-    // Inserting all the queries in an arraylist
+    // CREATE, INSERT
     static public ArrayList<Query> program2 = new ArrayList<>(Arrays.asList(
             new Query.CREATE(
                     new DatabaseName("Database CS476")),
@@ -23,7 +23,7 @@ public class Programs {
     ));
 
 
-    // Inserting all the queries in an arraylist
+    // CREATE, INSERT, GET
     static public ArrayList<Query> program3 = new ArrayList<>(Arrays.asList(
             new Query.CREATE(
                     new DatabaseName("Database CS476")),
@@ -35,7 +35,7 @@ public class Programs {
                     new KeyName("Student1"))
     ));
 
-    // Inserting all the queries in an arraylist
+    // CREATE, INSERT, UPDATE, GET
     static public ArrayList<Query> program4 = new ArrayList<>(Arrays.asList(
             new Query.CREATE(
                     new DatabaseName("Database CS476")),
@@ -50,12 +50,31 @@ public class Programs {
                     new KeyName("Student1"))
     ));
 
+//    // CREATE, INSERT, GET
+    static public ArrayList<Query> program5 = new ArrayList<>(Arrays.asList(
+            new Query.CREATE(
+                    new DatabaseName("Shoes")),
+            new Query.INSERT(
+                    new DatabaseName("Shoes"),
+                    new KeyName("Jordan's"),
+                    new Data.ArrayVal(
+                            new Data.StrVal("Retro 1"),
+                            new Data.StrVal("Retro 2"),
+                            new Data.StrVal("Retro 3"),
+                            new Data.StrVal("Retro 4"),
+                            new Data.StrVal("Retro 5"))),
+            new Query.GET(
+                    new DatabaseName("Shoes"),
+                    new KeyName("Jordan's"))
+        ));
+
+
 
 
 
     public static void main(String[] args) {
 	// write your code here
-        runQueries(program4);
+        runQueries(program5);
 
     }
 

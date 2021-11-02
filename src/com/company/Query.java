@@ -22,6 +22,7 @@ public abstract class Query {
         }
     }
 
+    // TODO change GET to RETRIEVE
     public static class GET extends Query {
         public final DatabaseName DBname;
         public final KeyName key;
@@ -61,4 +62,7 @@ public abstract class Query {
             this.DBname = DBname;
         }
     }
+
+    // TODO still need to add the Combine query
+
 }
