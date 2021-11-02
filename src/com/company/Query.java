@@ -22,12 +22,11 @@ public abstract class Query {
         }
     }
 
-    // TODO change GET to RETRIEVE
-    public static class GET extends Query {
+    public static class RETRIEVE extends Query {
         public final DatabaseName DBname;
         public final KeyName key;
 
-        public GET(DatabaseName DBname, KeyName key) {
+        public RETRIEVE(DatabaseName DBname, KeyName key) {
             this.DBname = DBname;
             this.key = key;
         }
@@ -63,6 +62,18 @@ public abstract class Query {
         }
     }
 
-    // TODO still need to add the Combine query
+    //
+    public static class COMBINE extends Query {
+        public final DatabaseName DBname;
+        public final KeyName key;
+        public final KeyName key1;
+        public final KeyName key2;
 
+        public COMBINE(DatabaseName DBname, KeyName key, KeyName key1, KeyName key2) {
+            this.DBname = DBname;
+            this.key = key;
+            this.key1 = key1;
+            this.key2 = key2;
+        }
+    }
 }

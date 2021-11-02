@@ -1,16 +1,15 @@
 package com.company;
 
-import java.util.HashMap;
-
 public class TypeChecker {
 
     public enum TYPE {
         CREATE,
         INSERT,
-        GET,
+        RETRIEVE,
         UPDATE,
         REMOVE,
         DELETE,
+        COMBINE,
         DATABASENAME,
         KEYNAME,
         DATA
@@ -29,10 +28,10 @@ public class TypeChecker {
                         typeCheck( ((Query.INSERT) q).key, TYPE.KEYNAME) &&
                         typeCheck( ((Query.INSERT) q).data, TYPE.DATA);
             }
-            case "GET": {
-                return typ == TYPE.GET &&
-                        typeCheck( ((Query.GET) q).DBname, TYPE.DATABASENAME) &&
-                        typeCheck( ((Query.GET) q).key, TYPE.KEYNAME);
+            case "RETRIEVE": {
+                return typ == TYPE.RETRIEVE &&
+                        typeCheck( ((Query.RETRIEVE) q).DBname, TYPE.DATABASENAME) &&
+                        typeCheck( ((Query.RETRIEVE) q).key, TYPE.KEYNAME);
             }
             case "UPDATE": {
                 return typ == TYPE.UPDATE &&
@@ -52,7 +51,14 @@ public class TypeChecker {
                 return typ == TYPE.DELETE &&
                         typeCheck( ((Query.DELETE) q).DBname, TYPE.DATABASENAME);
             }
-            default: return false; // None of the quires are
+            case "COMBINE": {
+                return typ == TYPE.COMBINE &&
+                        typeCheck( ((Query.COMBINE) q).DBname, TYPE.DATABASENAME) &&
+                        typeCheck( ((Query.COMBINE) q).key, TYPE.KEYNAME) &&
+                        typeCheck( ((Query.COMBINE) q).key1, TYPE.KEYNAME) &&
+                        typeCheck( ((Query.COMBINE) q).key2, TYPE.KEYNAME);
+            }
+            default: return false;
         }
     }
 }
