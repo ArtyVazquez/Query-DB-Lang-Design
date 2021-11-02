@@ -170,6 +170,6 @@ public class Programs {
         * */
 
         TypeChecker tc = new TypeChecker();
-        System.out.println(tc.typeCheckQuery(new Query.CREATE(new DatabaseName("MyDB")), Data.TYPE.DATABASE));
+        System.out.println(tc.typeCheckQuery(new Query.CREATE(new DatabaseName("MyDB"))));
     }
 }

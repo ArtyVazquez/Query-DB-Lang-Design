@@ -2,40 +2,43 @@ package com.company;
 
 public class TypeChecker {
 
-    Boolean typeCheckQuery(Query q, Data.TYPE... typ) {
+    // The data of a query can be any Data object which is IntVal, StrVal, FloatVal or ArrVal.
+    // The DBname must be of type DATABASE
+    // The database key must be of type KEY
+    Boolean typeCheckQuery(Query q) {
 
         switch (q.getClass().getSimpleName()) {
             case "CREATE": {
-                return ((Query.CREATE) q).DBname.TYP ==  typ[0];
+                return ((Query.CREATE) q).DBname.TYP ==  Data.TYPE.DATABASE;
             }
             case "INSERT": {
-                return  ((Query.INSERT) q).DBname.TYP == typ[0] &&
-                        ((Query.INSERT) q).key.TYP == typ[1] &&
-                        ((Query.INSERT) q).data.TYP == typ[2];
+                return  ((Query.INSERT) q).DBname.TYP == Data.TYPE.DATABASE &&
+                        ((Query.INSERT) q).key.TYP == Data.TYPE.KEY &&
+                        ((Query.INSERT) q).data.TYP == Data.TYPE.DATA;
 
             }
             case "RETRIEVE": {
-                return  ((Query.RETRIEVE) q).DBname.TYP == typ[0] &&
-                        ((Query.RETRIEVE) q).key.TYP == typ[1];
+                return  ((Query.RETRIEVE) q).DBname.TYP == Data.TYPE.DATABASE &&
+                        ((Query.RETRIEVE) q).key.TYP == Data.TYPE.KEY;
             }
             case "UPDATE": {
-                return ((Query.UPDATE) q).DBname.TYP == typ[0] &&
-                        ((Query.UPDATE) q).key.TYP == typ[1] &&
-                        ((Query.UPDATE) q).updatedData.TYP == typ[2];
+                return ((Query.UPDATE) q).DBname.TYP == Data.TYPE.DATABASE &&
+                        ((Query.UPDATE) q).key.TYP == Data.TYPE.KEY &&
+                        ((Query.UPDATE) q).updatedData.TYP ==Data.TYPE.DATA;
             }
             case "REMOVE": {
-                return ((Query.REMOVE) q).DBname.TYP == typ[0] &&
-                        ((Query.REMOVE) q).key.TYP == typ[1];
+                return ((Query.REMOVE) q).DBname.TYP == Data.TYPE.DATABASE &&
+                        ((Query.REMOVE) q).key.TYP == Data.TYPE.KEY;
 
             }
             case "DELETE": {
-                return ((Query.DELETE) q).DBname.TYP == typ[0];
+                return ((Query.DELETE) q).DBname.TYP == Data.TYPE.DATABASE;
             }
             case "COMBINE": {
-                return ((Query.COMBINE) q).DBname.TYP == typ[0] &&
-                        ((Query.COMBINE) q).key.TYP == typ[1] &&
-                        ((Query.COMBINE) q).key1.TYP == typ[2] &&
-                        ((Query.COMBINE) q).key2.TYP == typ[3];
+                return ((Query.COMBINE) q).DBname.TYP == Data.TYPE.DATABASE &&
+                        ((Query.COMBINE) q).key.TYP == Data.TYPE.KEY &&
+                        ((Query.COMBINE) q).key1.TYP == Data.TYPE.KEY &&
+                        ((Query.COMBINE) q).key2.TYP == Data.TYPE.KEY;
             }
             default: return false;
         }
