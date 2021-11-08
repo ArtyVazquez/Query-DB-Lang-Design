@@ -26,11 +26,12 @@ public class Interpreter {
             case "INSERT": {
                 Query.INSERT i = (Query.INSERT) q;
 
-                if (checkDBExists(i.DBname.name) == null)
+                if (checkDBAndKeyExists(i.DBname.name, i.key.name) != null)
                     throw new Error("Invalid DB or Key does not exists");
 
-                databases.get(i.DBname.name).put(i.key.name, i.data);
-                System.out.println(i.data + " inserted into key {" + i.key.name + "} on database {" + i.DBname.name + "}");
+                databases.get(i.DBname.name).put( i.key.name, i.data);
+                System.out.println(i.data + " inserted into key {" + i.key.name + "} on database {"
+                        + i.DBname.name + "}");
                 return;
             }
             case "RETRIEVE": {
@@ -39,7 +40,8 @@ public class Interpreter {
                 if (checkDBAndKeyExists(g.DBname.name, g.key.name) == null)
                     throw new Error("Invalid DB or Key does not exists");
 
-                System.out.println("Retrieved: " + databases.get(g.DBname.name).get(g.key.name));
+                System.out.println("Retrieved: " + databases.get(g.DBname.name).get(g.key.name) +
+                        " from database " + g.DBname.name);
                 return;
             }
             case "UPDATE": {
@@ -59,7 +61,7 @@ public class Interpreter {
                     throw new Error("Invalid DB or Key does not exists");
 
                 databases.get(r.DBname.name).remove(r.key.name);
-                System.out.println("Removed " + r.key.name);
+                System.out.println("Removed " + r.key.name + " from database " + r.DBname.name);
                 return;
             }
             case "DELETE": {
@@ -68,7 +70,11 @@ public class Interpreter {
                 if (checkDBExists(d.DBname.name) == null)
                     throw new Error("DB does not exist");
 
-                databases.remove("Deleted " + d.DBname.name);
+                databases.remove(d.DBname.name);
+
+                System.out.println("Deleted database " + d.DBname.name);
+
+                return;
             }
             case "COMBINE": {
                 Query.COMBINE c = (Query.COMBINE) q;
@@ -80,6 +86,9 @@ public class Interpreter {
                 Data d1 = databases.get(c.DBname.name).get(c.key1.name);
                 Data d2 = databases.get(c.DBname.name).get(c.key2.name);
                 databases.get(c.DBname.name).put(c.key.name, new Data.ArrayVal(d1, d2));
+
+                System.out.println("Combined data with key " + c.key1.name + " and data with key " + c.key2.name +
+                        "  into a new key " + c.key.name);
                 return;
             }
             default: throw new Error("I don't know the query: " + q.getClass().getSimpleName());
@@ -91,7 +100,7 @@ public class Interpreter {
         return databases.get(db);
     }
 
-    // Throw an error if a Key is not within a DB
+    // Throw an error
     public Object checkDBAndKeyExists(String db, String k) {
         if (databases.get(db) != null)
             return databases.get(db).get(k);

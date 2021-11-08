@@ -1,7 +1,7 @@
 package com.company;
 
 
-public class Programs {
+public class RunQueries {
 
 
     public static void main(String[] args) {
@@ -9,46 +9,46 @@ public class Programs {
         Interpreter i = new Interpreter();
 
         // Program 1 CREATE
-/*        i.queryAll(new Query.CREATE(
-                new DatabaseName("Database CS476")));*/
+        i.query(new Query.CREATE(
+                new DatabaseIdent("Database CS476")));
 
         // Program 2 CREATE, INSERT
-/*        i.queryAll(new Query.CREATE(
-                        new DatabaseName("Database CS476")),
+/*        i.query(new Query.CREATE(
+                        new DatabaseIdent("Database CS476")),
                 new Query.INSERT(
-                        new DatabaseName("Database CS476"),
-                        new KeyName("Student1"),
+                        new DatabaseIdent("Database CS476"),
+                        new KeyIdent("Student1"),
                         new Data.StrVal("Arturo")));*/
 
         // Program 3 CREATE, INSERT. GET
-/*        i.queryAll(new Query.CREATE(
-                        new DatabaseName("Database CS476")),
+/*        i.query(new Query.CREATE(
+                        new DatabaseIdent("Database CS476")),
                 new Query.INSERT(
-                        new DatabaseName("Database CS476"),
-                        new KeyName("Student1"),
+                        new DatabaseIdent("Database CS476"),
+                        new KeyIdent("Student1"),
                         new Data.StrVal("Arturo")),
-                new Query.RETRIEVE(new DatabaseName("Database CS476"),
-                        new KeyName("Student1")));*/
+                new Query.RETRIEVE(new DatabaseIdent("Database CS476"),
+                        new KeyIdent("Student1")));*/
 
         // Program 4 CREATE, INSERT, UPDATE, GET
-/*        i.queryAll(new Query.CREATE(
-                        new DatabaseName("Database CS476")),
+/*        i.query(new Query.CREATE(
+                        new DatabaseIdent("Database CS476")),
                 new Query.INSERT(
-                        new DatabaseName("Database CS476"),
-                        new KeyName("Student1"),
+                        new DatabaseIdent("Database CS476"),
+                        new KeyIdent("Student1"),
                         new Data.StrVal("Arturo")),
-                new Query.UPDATE(new DatabaseName("Database CS476"),
-                        new KeyName("Student1"),
+                new Query.UPDATE(new DatabaseIdent("Database CS476"),
+                        new KeyIdent("Student1"),
                         new Data.StrVal("Arturo Vazquez")),
-                new Query.RETRIEVE(new DatabaseName("Database CS476"),
-                        new KeyName("Student1")));*/
+                new Query.RETRIEVE(new DatabaseIdent("Database CS476"),
+                        new KeyIdent("Student1")));*/
 
         // Program 5 CREATE, INSERT, UPDATE, GET
-/*        i.queryAll(new Query.CREATE(
-                        new DatabaseName("Plants")),
+/*        i.query(new Query.CREATE(
+                        new DatabaseIdent("Plants")),
                 new Query.INSERT(
-                        new DatabaseName("Plants"),
-                        new KeyName("Fruits"),
+                        new DatabaseIdent("Plants"),
+                        new KeyIdent("Fruits"),
                         new Data.ArrayVal(
                                 new Data.StrVal("Apple"),
                                 new Data.StrVal("Pear"),
@@ -56,23 +56,23 @@ public class Programs {
                                 new Data.StrVal("Mango"),
                                 new Data.StrVal("Cherry"))),
                 new Query.INSERT(
-                        new DatabaseName("Plants"),
-                        new KeyName("Vegetables"),
+                        new DatabaseIdent("Plants"),
+                        new KeyIdent("Vegetables"),
                         new Data.ArrayVal(
                                 new Data.StrVal("Tomato"),
                                 new Data.StrVal("Cauliflower"),
                                 new Data.StrVal("Broccoli"),
                                 new Data.StrVal("Zucchini"))),
                 new Query.RETRIEVE(
-                        new DatabaseName("Plants"),
-                        new KeyName("Vegetables")));*/
+                        new DatabaseIdent("Plants"),
+                        new KeyIdent("Vegetables")));*/
 
         // Program 6
-/*        i.queryAll(new Query.CREATE(
-                        new DatabaseName("Plants")),
+  /*      i.query(new Query.CREATE(
+                        new DatabaseIdent("Plants")),
                 new Query.INSERT(
-                        new DatabaseName("Plants"),
-                        new KeyName("Fruits"),
+                        new DatabaseIdent("Plants"),
+                        new KeyIdent("Fruits"),
                         new Data.ArrayVal(
                                 new Data.StrVal("Apple"),
                                 new Data.StrVal("Pear"),
@@ -80,23 +80,23 @@ public class Programs {
                                 new Data.StrVal("Mango"),
                                 new Data.StrVal("Cherry"))),
                 new Query.INSERT(
-                        new DatabaseName("Plants"),
-                        new KeyName("Vegetables"),
+                        new DatabaseIdent("Plants"),
+                        new KeyIdent("Vegetables"),
                         new Data.ArrayVal(
                                 new Data.StrVal("Tomato"),
                                 new Data.StrVal("Cauliflower"),
                                 new Data.StrVal("Broccoli"),
                                 new Data.StrVal("Zucchini"))),
                 new Query.RETRIEVE(
-                        new DatabaseName("Plants"),
-                        new KeyName("Fruits")));*/
+                        new DatabaseIdent("Plants"),
+                        new KeyIdent("Fruits")));*/
 
-        // Program 7 ---> error thrown
-/*        i.queryAll(new Query.CREATE(
-                        new DatabaseName("Plants")),
+        // Program 7 ---> error thrown : Invalid DB or Key does not exist
+/*        i.query(new Query.CREATE(
+                        new DatabaseIdent("Plants")),
                 new Query.INSERT(
-                        new DatabaseName("Plants"),
-                        new KeyName("Fruits"),
+                        new DatabaseIdent("Plants"),
+                        new KeyIdent("Fruits"),
                         new Data.ArrayVal(
                                 new Data.StrVal("Apple"),
                                 new Data.StrVal("Pear"),
@@ -104,27 +104,27 @@ public class Programs {
                                 new Data.StrVal("Mango"),
                                 new Data.StrVal("Cherry"))),
                 new Query.INSERT(
-                        new DatabaseName("Plants"),
-                        new KeyName("Vegetables"),
+                        new DatabaseIdent("Plants"),
+                        new KeyIdent("Vegetables"),
                         new Data.ArrayVal(
                                 new Data.StrVal("Tomato"),
                                 new Data.StrVal("Cauliflower"),
                                 new Data.StrVal("Broccoli"),
                                 new Data.StrVal("Zucchini"))),
                 new Query.REMOVE(
-                        new DatabaseName("Plants"),
-                        new KeyName("Fruits")),
+                        new DatabaseIdent("Plants"),
+                        new KeyIdent("Fruits")),
                 new Query.RETRIEVE(
-                        new DatabaseName("Plants"),
-                        new KeyName("Fruits")
+                        new DatabaseIdent("Plants"),
+                        new KeyIdent("Fruits")
                 ));*/
 
         // Program 8
-/*        i.queryAll(new Query.CREATE(
-                        new DatabaseName("Plants")),
+/*        i.query(new Query.CREATE(
+                        new DatabaseIdent("Plants")),
                 new Query.INSERT(
-                        new DatabaseName("Plants"),
-                        new KeyName("Fruits"),
+                        new DatabaseIdent("Plants"),
+                        new KeyIdent("Fruits"),
                         new Data.ArrayVal(
                                 new Data.StrVal("Apple"),
                                 new Data.StrVal("Pear"),
@@ -132,21 +132,21 @@ public class Programs {
                                 new Data.StrVal("Mango"),
                                 new Data.StrVal("Cherry"))),
                 new Query.INSERT(
-                        new DatabaseName("Plants"),
-                        new KeyName("Vegetables"),
+                        new DatabaseIdent("Plants"),
+                        new KeyIdent("Vegetables"),
                         new Data.ArrayVal(
                                 new Data.StrVal("Tomato"),
                                 new Data.StrVal("Cauliflower"),
                                 new Data.StrVal("Broccoli"),
                                 new Data.StrVal("Zucchini"))),
                 new Query.COMBINE(
-                        new DatabaseName("Plants"),
-                        new KeyName("Fruits & Veg"),
-                        new KeyName("Vegetables"),
-                        new KeyName("Fruits")),
+                        new DatabaseIdent("Plants"),
+                        new KeyIdent("Fruits & Veg"),
+                        new KeyIdent("Vegetables"),
+                        new KeyIdent("Fruits")),
                 new Query.RETRIEVE(
-                        new DatabaseName("Plants"),
-                        new KeyName("Fruits & Veg")
+                        new DatabaseIdent("Plants"),
+                        new KeyIdent("Fruits & Veg")
                 ));*/
 
 
@@ -161,7 +161,7 @@ public class Programs {
         *
         * */
 
-        TypeChecker tc = new TypeChecker();
+       /* TypeChecker tc = new TypeChecker();
         System.out.println(
                 tc.typeCheck(new Query.CREATE(new DatabaseIdent("MyDB")))); // Should return true
 
@@ -176,14 +176,14 @@ public class Programs {
                                 new Query.INSERT(
                                         new DatabaseIdent("School"),
                                         new KeyIdent("Midterm Grades"),
-                                        new Data.DoubleVal(22.22))));
+                                        new Data.DoubleVal(88.88))));
 
         System.out.println(
         tc.typeCheck(new Query.CREATE(new DatabaseIdent("School")), // Should return false;
                 new Query.INSERT(
                         new DatabaseIdent("School"),
                         new DatabaseIdent("Midterm Grades"),
-                        new Data.DoubleVal(22.22))));
+                        new Data.DoubleVal(100.00))));*/
 
 
 

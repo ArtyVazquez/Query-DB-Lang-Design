@@ -4,9 +4,7 @@ import java.util.Arrays;
 
 public class TypeChecker {
 
-    // The data of a query can be any Data object which is IntVal, StrVal, FloatVal or ArrVal.
-    // The DBname must be of type name more specifically DATABASE
-    // The database key must be of type name more specifically KEY
+
     Boolean typeCheck(Query... quires) {
         return Arrays.stream(quires).allMatch(this::typeCheck);
     }

@@ -24,7 +24,7 @@ public abstract class Data {
 
         @Override
         public String toString() {
-            return "IntVal{" + "val=" + val + '}';
+            return "IntVal{" + val + '}';
         }
     }
 
@@ -37,7 +37,7 @@ public abstract class Data {
 
         @Override
         public String toString() {
-            return "StrVal{" + "val=" + val + '}';
+            return "StrVal{"  + val + '}';
         }
     }
 
@@ -51,7 +51,7 @@ public abstract class Data {
 
         @Override
         public String toString() {
-            return "DoubleVal{" + "val=" + val + '}';
+            return "DoubleVal{" + val + '}';
         }
     }
 
