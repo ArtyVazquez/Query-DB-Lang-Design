@@ -85,10 +85,10 @@ public class Interpreter {
 
                 Data d1 = databases.get(c.DBname.name).get(c.key1.name);
                 Data d2 = databases.get(c.DBname.name).get(c.key2.name);
-                databases.get(c.DBname.name).put(c.key.name, new Data.ArrayVal(d1, d2));
+                databases.get(c.DBname.name).put(c.newKey.name, new Data.ArrayVal(d1, d2));
 
                 System.out.println("Combined data with key " + c.key1.name + " and data with key " + c.key2.name +
-                        "  into a new key " + c.key.name);
+                        "  into a new key " + c.newKey.name);
                 return;
             }
             default: throw new Error("I don't know the query: " + q.getClass().getSimpleName());

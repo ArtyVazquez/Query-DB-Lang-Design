@@ -39,7 +39,7 @@ public class TypeChecker {
             }
             case "COMBINE": {
                 return ((Query.COMBINE) q).DBname.TYP == Data.TYPE.DATABASE &&
-                        ((Query.COMBINE) q).key.TYP == Data.TYPE.KEY &&
+                        ((Query.COMBINE) q).newKey.TYP == Data.TYPE.KEY &&
                         ((Query.COMBINE) q).key1.TYP == Data.TYPE.KEY &&
                         ((Query.COMBINE) q).key2.TYP == Data.TYPE.KEY;
             }

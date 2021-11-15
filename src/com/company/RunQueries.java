@@ -6,19 +6,19 @@ public class RunQueries {
 
     public static void main(String[] args) {
 
-        Interpreter i = new Interpreter();
+       Interpreter i = new Interpreter();
 
         // Program 1 CREATE
-        i.query(new Query.CREATE(
-                new DatabaseIdent("Database CS476")));
+/*        i.query(new Query.CREATE(
+                new DatabaseIdent("Database CS476")));*/
 
         // Program 2 CREATE, INSERT
-/*        i.query(new Query.CREATE(
+        i.query(new Query.CREATE(
                         new DatabaseIdent("Database CS476")),
                 new Query.INSERT(
                         new DatabaseIdent("Database CS476"),
                         new KeyIdent("Student1"),
-                        new Data.StrVal("Arturo")));*/
+                        new Data.StrVal("Arturo")));
 
         // Program 3 CREATE, INSERT. GET
 /*        i.query(new Query.CREATE(
@@ -151,9 +151,6 @@ public class RunQueries {
 
 
 
-
-
-
         /*
         *
         *
@@ -161,7 +158,8 @@ public class RunQueries {
         *
         * */
 
-       /* TypeChecker tc = new TypeChecker();
+
+       TypeChecker tc = new TypeChecker();
         System.out.println(
                 tc.typeCheck(new Query.CREATE(new DatabaseIdent("MyDB")))); // Should return true
 
@@ -183,7 +181,7 @@ public class RunQueries {
                 new Query.INSERT(
                         new DatabaseIdent("School"),
                         new DatabaseIdent("Midterm Grades"),
-                        new Data.DoubleVal(100.00))));*/
+                        new Data.DoubleVal(100.00))));
 
 
 

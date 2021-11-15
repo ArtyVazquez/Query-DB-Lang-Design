@@ -64,13 +64,13 @@ public abstract class Query {
 
     public static class COMBINE extends Query {
         public final Ident DBname;
-        public final Ident key;
+        public final Ident newKey;
         public final Ident key1;
         public final Ident key2;
 
-        public COMBINE(Ident DBname, Ident key, Ident key1, Ident key2) {
+        public COMBINE(Ident DBname, Ident newKey, Ident key1, Ident key2) {
             this.DBname = DBname;
-            this.key = key;
+            this.newKey = newKey;
             this.key1 = key1;
             this.key2 = key2;
         }
