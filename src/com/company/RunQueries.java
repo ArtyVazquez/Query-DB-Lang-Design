@@ -13,14 +13,14 @@ public class RunQueries {
                 new DatabaseIdent("Database CS476")));*/
 
         // Program 2 CREATE, INSERT
-        i.query(new Query.CREATE(
+/*        i.query(new Query.CREATE(
                         new DatabaseIdent("Database CS476")),
                 new Query.INSERT(
                         new DatabaseIdent("Database CS476"),
                         new KeyIdent("Student1"),
-                        new Data.StrVal("Arturo")));
+                        new Data.StrVal("Arturo")));*/
 
-        // Program 3 CREATE, INSERT. GET
+        // Program 3 CREATE, INSERT. RETRIEVE
 /*        i.query(new Query.CREATE(
                         new DatabaseIdent("Database CS476")),
                 new Query.INSERT(
@@ -30,7 +30,7 @@ public class RunQueries {
                 new Query.RETRIEVE(new DatabaseIdent("Database CS476"),
                         new KeyIdent("Student1")));*/
 
-        // Program 4 CREATE, INSERT, UPDATE, GET
+        // Program 4 CREATE, INSERT, UPDATE, RETRIEVE
 /*        i.query(new Query.CREATE(
                         new DatabaseIdent("Database CS476")),
                 new Query.INSERT(
@@ -43,7 +43,7 @@ public class RunQueries {
                 new Query.RETRIEVE(new DatabaseIdent("Database CS476"),
                         new KeyIdent("Student1")));*/
 
-        // Program 5 CREATE, INSERT, UPDATE, GET
+        // Program 5 CREATE, INSERT, RETRIEVE
 /*        i.query(new Query.CREATE(
                         new DatabaseIdent("Plants")),
                 new Query.INSERT(
@@ -67,8 +67,8 @@ public class RunQueries {
                         new DatabaseIdent("Plants"),
                         new KeyIdent("Vegetables")));*/
 
-        // Program 6
-  /*      i.query(new Query.CREATE(
+        // Program 6 CREATE, INSERT, RETRIEVE
+/*        i.query(new Query.CREATE(
                         new DatabaseIdent("Plants")),
                 new Query.INSERT(
                         new DatabaseIdent("Plants"),
@@ -91,7 +91,8 @@ public class RunQueries {
                         new DatabaseIdent("Plants"),
                         new KeyIdent("Fruits")));*/
 
-        // Program 7 ---> error thrown : Invalid DB or Key does not exist
+        // Program 7 CREATE INSERT REMOVE RETRIEVE
+        // ---> error thrown : Invalid DB or Key does not exist. Since Fruits was removed then we tried to retrieve
 /*        i.query(new Query.CREATE(
                         new DatabaseIdent("Plants")),
                 new Query.INSERT(
@@ -119,7 +120,7 @@ public class RunQueries {
                         new KeyIdent("Fruits")
                 ));*/
 
-        // Program 8
+        // Program 8 CREATE INSERT COMBINE RETRIEVE
 /*        i.query(new Query.CREATE(
                         new DatabaseIdent("Plants")),
                 new Query.INSERT(
@@ -149,41 +150,19 @@ public class RunQueries {
                         new KeyIdent("Fruits & Veg")
                 ));*/
 
-
-
-        /*
-        *
-        *
-        * Type Checker
-        *
-        * */
-
-
-       TypeChecker tc = new TypeChecker();
-        System.out.println(
-                tc.typeCheck(new Query.CREATE(new DatabaseIdent("MyDB")))); // Should return true
-
-        System.out.println(
-                tc.typeCheck(new Query.CREATE(new KeyIdent("DB")))); // Should return false
-
-        System.out.println(
-                tc.typeCheck(new Query.CREATE(new Ident()))); // Should return false
-
-        System.out.println(
-                tc.typeCheck(new Query.CREATE(new DatabaseIdent("School")), // Should return true;
-                                new Query.INSERT(
-                                        new DatabaseIdent("School"),
-                                        new KeyIdent("Midterm Grades"),
-                                        new Data.DoubleVal(88.88))));
-
-        System.out.println(
-        tc.typeCheck(new Query.CREATE(new DatabaseIdent("School")), // Should return false;
+        // Program 9 CREATE INSERT DELETE RETRIEVE
+        //  ---> error thrown : Invalid DB or Key does not exist. Since database was deleted
+        i.query(new Query.CREATE(
+                        new DatabaseIdent("Computer Science Department")),
                 new Query.INSERT(
-                        new DatabaseIdent("School"),
-                        new DatabaseIdent("Midterm Grades"),
-                        new Data.DoubleVal(100.00))));
-
-
+                        new DatabaseIdent("Computer Science Department"),
+                        new KeyIdent("Courses"),
+                        new Data.ArrayVal(new Data.StrVal("CS476"),
+                                          new Data.StrVal("CS474"),
+                                          new Data.StrVal("CS401"))),
+                new Query.DELETE(new DatabaseIdent("Computer Science Department")),
+                new Query.RETRIEVE(new DatabaseIdent("Computer Science Department"),
+                                   new KeyIdent("Courses")));
 
     }
 }

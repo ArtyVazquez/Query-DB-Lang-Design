@@ -51,7 +51,7 @@ public class Interpreter {
                     throw new Error("Invalid DB or Key does not exists");
 
                 databases.get(u.DBname.name).put(u.key.name, u.updatedData);
-                System.out.println("key " + u.key.name + " updated data to " + u.updatedData);
+                System.out.println("Key " + u.key.name + " updated data to " + u.updatedData);
                 return;
             }
             case "REMOVE": {
